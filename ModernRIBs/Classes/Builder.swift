@@ -16,19 +16,24 @@
 
 import Foundation
 
-/// The base builder protocol that all builders should conform to.
-public protocol Buildable: AnyObject {}
+public protocol Builder {
+    associatedtype Dependency
 
-/// Utility that instantiates a RIB and sets up its internal wirings.
-open class Builder<DependencyType>: Buildable {
+    func build(dependency: Dependency) -> Routing
+}
 
-    /// The dependency used for this builder to build the RIB.
-    public let dependency: DependencyType
+public struct ScopedBuilder<Args>: Builder {
+    public let builder: (Args) -> Routing
 
-    /// Initializer.
-    ///
-    /// - parameter dependency: The dependency used for this builder to build the RIB.
-    public init(dependency: DependencyType) {
-        self.dependency = dependency
+    public func build(dependency: Args) -> Routing {
+        builder(dependency)
+    }
+}
+
+public extension Builder {
+    func scoped<T>(_ builder: @escaping (T) -> Dependency) -> ScopedBuilder<T> {
+        ScopedBuilder{ args -> Routing in
+            self.build(dependency: builder(args))
+        }
     }
 }
