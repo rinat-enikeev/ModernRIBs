@@ -31,7 +31,7 @@ import Foundation
 /// implement the actual RIB building logic, with the given component
 /// and dynamic dependency.
 /// - SeeAlso: SimpleComponentizedBuilder
-open class ComponentizedBuilder<Component, Router, DynamicBuildDependency, DynamicComponentDependency>: Buildable {
+open class ComponentizedBuilder<Component, Router, DynamicBuildDependency, DynamicComponentDependency> {
 
     // Builder should not directly retain an instance of the component.
     // That would make the component's lifecycle longer than the built

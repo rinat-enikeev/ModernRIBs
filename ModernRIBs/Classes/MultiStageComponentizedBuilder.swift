@@ -23,7 +23,7 @@ import Foundation
 /// the multi-stage building process.
 ///
 /// - SeeAlso: SimpleMultiStageComponentizedBuilder
-open class MultiStageComponentizedBuilder<Component, Router, DynamicBuildDependency>: Buildable {
+open class MultiStageComponentizedBuilder<Component, Router, DynamicBuildDependency> {
 
     // Builder should not directly retain an instance of the component.
     // That would make the component's lifecycle longer than the built
