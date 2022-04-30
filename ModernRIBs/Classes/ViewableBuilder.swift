@@ -31,8 +31,8 @@ public struct ScopedViewableBuilder<Args>: ViewableBuilder {
 }
 
 public extension ViewableBuilder {
-    func scoped<T>(_ builder: @escaping (T) -> Dependency) -> ScopedBuilder<T> {
-        ScopedBuilder{ args -> Routing in
+    func scoped<T>(_ builder: @escaping (T) -> Dependency) -> ScopedViewableBuilder<T> {
+        ScopedViewableBuilder{ args -> ViewableRouting in
             self.build(dependency: builder(args))
         }
     }

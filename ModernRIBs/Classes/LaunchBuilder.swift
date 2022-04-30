@@ -31,8 +31,8 @@ public struct ScopedLaunchBuilder<Args>: LaunchBuilder {
 }
 
 public extension LaunchBuilder {
-    func scoped<T>(_ builder: @escaping (T) -> Dependency) -> ScopedBuilder<T> {
-        ScopedBuilder{ args -> LaunchRouting in
+    func scoped<T>(_ builder: @escaping (T) -> Dependency) -> ScopedLaunchBuilder<T> {
+        ScopedLaunchBuilder{ args -> LaunchRouting in
             self.build(dependency: builder(args))
         }
     }
