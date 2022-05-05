@@ -11,14 +11,14 @@ protocol ___VARIABLE_productName___Presentable: Presentable {
     // TODO: Declare methods the interactor can invoke the presenter to present data.
 }
 
-protocol ___VARIABLE_productName___Listener: AnyObject {
+public protocol ___VARIABLE_productName___Delegate: AnyObject {
     // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
 }
 
 final class ___VARIABLE_productName___Interactor: PresentableInteractor<___VARIABLE_productName___Presentable>, ___VARIABLE_productName___Interactable, ___VARIABLE_productName___PresentableListener {
 
     weak var router: ___VARIABLE_productName___Routing?
-    weak var listener: ___VARIABLE_productName___Listener?
+    weak var delegate: ___VARIABLE_productName___Delegate?
 
     // TODO: Add additional dependencies to constructor. Do not perform any logic
     // in constructor.
