@@ -31,7 +31,7 @@ public enum LeakDetectionStatus {
 public struct LeakDefaultExpectationTime {
 
     /// The object deallocation time.
-    public static let deallocation = 1.0
+    public static let deallocation = 2.0
 
     /// The view disappear time.
     public static let viewDisappear = 5.0
